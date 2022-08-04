@@ -37,12 +37,12 @@ st.write("##")
 with st.form(key="Streamlit Multi-Image Comparison"):
     # image one inputs
     col1, col2 = st.columns([1, 1])
-    with col2:
-        img1_text = st.text_input("Image one text:", value="SLICE")
+    with col1:
+        img1_text = st.text_input("Prediction type one:", value="SLICE")
     # image two inputs
-    col1, col2 = st.columns([1, 1])
+    # col1, col2 = st.columns([1, 1])
     with col2:
-        img2_text = st.text_input("Image two text:", value="SINGLE SHOT")
+        img2_text = st.text_input("Prediction type two:", value="SINGLE SHOT")
 
     # continious parameters
     col1, col2 = st.columns([1, 1])
@@ -72,9 +72,9 @@ with st.form(key="Streamlit Multi-Image Comparison"):
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Compare Model detected images')
-    parser.add_argument('--slice-dir', default='results/slice', help='slice predicted images dir')
-    parser.add_argument('--single-shot-dir', default='results/ss', help='single shot predicted images dir')
-    parser.add_argument('--max-viz-images', default=15, help='max will be show images count')
+    parser.add_argument('--slice-dir', default='/home/mcv/PycharmProjects/mmdetection/resnest_faster_rcnn_s101_slice', help='slice predicted images dir')
+    parser.add_argument('--single-shot-dir', default='/home/mcv/PycharmProjects/mmdetection/resnest_faster_rcnn_s101_ss', help='single shot predicted images dir')
+    parser.add_argument('--max-viz-images', default=1, help='max will be show images count')
     parser.add_argument('--type', default='png', help='png, jpeg, jpg')
 
     args = parser.parse_args()
