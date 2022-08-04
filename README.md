@@ -28,7 +28,7 @@ pip install streamlit-image-comparison
 
 ```bash
 
-streamlit run app.py
+streamlit run app.py -- --slice-dir "results/slice" --single-shot-dir "results/ss" --type "png" --max-viz-images 4
 ```
 
 ```python

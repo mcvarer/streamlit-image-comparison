@@ -1,15 +1,17 @@
-import argparse
+# import argparse
 import glob
 import os.path
 from PIL import Image
+from argparse import ArgumentParser
 
 import streamlit as st
 from streamlit_image_comparison import image_comparison
+import random
 
 
 st.set_page_config(
     page_title="Streamlit Multi-Image Comparison",
-    page_icon="🔥",
+    page_icon="👑",
     layout="wide",
     initial_sidebar_state="auto",
 )
@@ -67,14 +69,14 @@ with st.form(key="Streamlit Multi-Image Comparison"):
     # centered submit button
     col1, col2, col3 = st.columns([6, 4, 6])
     with col2:
-        submit = st.form_submit_button("Update Render 🔥")
+        submit = st.form_submit_button("🆄🅿🅳🅰🆃🅴")
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Compare Model detected images')
+    parser = ArgumentParser(description='Compare Model detected images')
     parser.add_argument('--slice-dir', default='/home/mcv/PycharmProjects/mmdetection/resnest_faster_rcnn_s101_slice', help='slice predicted images dir')
     parser.add_argument('--single-shot-dir', default='/home/mcv/PycharmProjects/mmdetection/resnest_faster_rcnn_s101_ss', help='single shot predicted images dir')
-    parser.add_argument('--max-viz-images', default=1, help='max will be show images count')
+    parser.add_argument('--max-viz-images', default=3, help='max will be show images count')
     parser.add_argument('--type', default='png', help='png, jpeg, jpg')
 
     args = parser.parse_args()
@@ -84,10 +86,12 @@ def parse_args():
 def prepare_images(args):
     slice_dir = args.slice_dir
     single_shot_dir = args.single_shot_dir
-    max_viz_images = args.max_viz_images
+    max_viz_images = int(args.max_viz_images)
     file_type = args.type
-    images_slices = sorted(glob.glob(os.path.join(slice_dir, f'*.{file_type}')))
-    images_single_shot = sorted(glob.glob(os.path.join(single_shot_dir, f'*.{file_type}')))
+    images_slices = glob.glob(os.path.join(slice_dir, f'*.{file_type}'))
+    images_single_shot = glob.glob(os.path.join(single_shot_dir, f'*.{file_type}'))
+    images_slices = sorted(images_slices)
+    images_single_shot = sorted(images_single_shot)
 
     total_images = len(images_slices)
     if total_images >= max_viz_images:
