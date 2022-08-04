@@ -26,6 +26,11 @@ pip install streamlit-image-comparison
 
 ## Example
 
+```bash
+
+streamlit run app.py
+```
+
 ```python
 # Streamlit Image-Comparison Component Example
 
