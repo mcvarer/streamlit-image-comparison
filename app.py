@@ -10,7 +10,7 @@ from streamlit_image_comparison import image_comparison
 st.set_page_config(
     page_title="Streamlit Multi-Image Comparison",
     page_icon="🔥",
-    layout="centered",
+    layout="wide",
     initial_sidebar_state="auto",
 )
 
@@ -36,11 +36,11 @@ st.write("##")
 
 with st.form(key="Streamlit Multi-Image Comparison"):
     # image one inputs
-    col1, col2 = st.columns([3, 1])
+    col1, col2 = st.columns([1, 1])
     with col2:
         img1_text = st.text_input("Image one text:", value="SLICE")
     # image two inputs
-    col1, col2 = st.columns([3, 1])
+    col1, col2 = st.columns([1, 1])
     with col2:
         img2_text = st.text_input("Image two text:", value="SINGLE SHOT")
 
@@ -52,7 +52,7 @@ with st.form(key="Streamlit Multi-Image Comparison"):
         )
     with col2:
         width = st.slider(
-            "Component width:", min_value=400, max_value=1000, value=700, step=100
+            "Component width:", min_value=400, max_value=1000, value=1700, step=100
         )
 
     # boolean parameters
